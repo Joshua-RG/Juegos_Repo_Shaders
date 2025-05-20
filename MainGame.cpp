@@ -17,17 +17,20 @@ void MainGame::run()
 	gameState = GameState::PLAY;
 	init();
 	sprites.push_back(new Sprite());
-	sprites.back()->init(-1, -1, 1, 1, "Images/lock.png");
+	sprites.back()->init(-1, -1, 1, 1, "Images/cp.png");
 	sprites.push_back(new Sprite());
-	sprites.back()->init(0, -1, 1, 1, "Images/lock.png");
-	//sprite.init(-1, -1, 1, 1,"Images/lock.png");
+	sprites.back()->init(0, -1, 1, 1, "Images/cp3.png");
+	sprites.push_back(new Sprite());
+	sprites.back()->init(-1, 0, 1, 1, "Images/cp4.png");
+	sprites.push_back(new Sprite());
+	sprites.back()->init(0, 0, 1, 1, "Images/cp2.png");
 	update();
 }
 
 void MainGame::init()
 {
 	SDL_Init(SDL_INIT_HAPTIC | SDL_INIT_CAMERA | SDL_INIT_EVENTS);
-	window = SDL_CreateWindow("Hola", witdh, height, SDL_WINDOW_OPENGL);
+	window = SDL_CreateWindow("Descenso a la locura", witdh, height, SDL_WINDOW_OPENGL);
 
 	SDL_GLContext glContext = SDL_GL_CreateContext(window);
 	GLenum error = glewInit();

@@ -35,8 +35,8 @@ void Sprite::init(float x, float y, int width, int height,string texturePath)
 	{
 		vertexData[i].setColor(255, 0, 0, 255);
 	}
-	vertexData[1].setColor(0, 0, 255, 255);
-	vertexData[4].setColor(0, 255, 0, 255);
+	vertexData[1].setColor(255, 0, 255, 255);
+	vertexData[4].setColor(255, 255, 0, 255);
 
 	vertexData[0].setUV(1.0f, 1.0f);
 	vertexData[1].setUV(0.0f, 1.0f);

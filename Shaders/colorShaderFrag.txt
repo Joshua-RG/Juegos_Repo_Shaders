@@ -8,16 +8,22 @@ out vec4 color;
 uniform float time;
 uniform sampler2D myImage;
 
+//void main(){
+//	vec4 textureColor = texture(myImage,fragmentUV);
+//	color = vec4(fragmentColor.r * (cos(fragmentPosition.x * 4.0 + time) + 1.0) * 0.5,
+//	fragmentColor.r * (cos(fragmentPosition.x * 8.0 + time) + 1.0) * 0.5,
+//	fragmentColor.r * (cos(fragmentPosition.x * 2.0 + time) + 1.0) * 0.5,
+//	fragmentColor.a
+//	) * textureColor;
+//}
 void main(){
-	//color = vec4(1.0,1.0,0.0,1.0);
-	//color = fragmentColor;
-
-	//color = fragmentColor + vec4(1.0 * (cos(time) + 1.0)*0.5,1.0 * (cos(time + 2.0)+1.0) * 0.5,1.0 * (sin(time + 1.0)+1.0) * 0.5,0.0);
-
-	vec4 textureColor = texture(myImage,fragmentUV);
-	color = vec4(fragmentColor.r * (cos(fragmentPosition.x * 4.0 + time) + 1.0) * 0.5,
-	fragmentColor.r * (cos(fragmentPosition.x * 8.0 + time) + 1.0) * 0.5,
-	fragmentColor.r * (cos(fragmentPosition.x * 2.0 + time) + 1.0) * 0.5,
-	fragmentColor.a
-	) * textureColor;
+  	vec2 uv = fragmentUV;
+    	float glitch = step(0.95, fract(sin(dot(uv, vec2(12.9898,78.233)) + time) * 43758.5453));
+    	vec4 tex = texture(myImage, uv + vec2(glitch * 0.02, 0.0));
+    	vec3 colorShift = vec3(
+        	0.5 + 0.5 * sin(time + fragmentPosition.x * 10.0),
+        	0.5 + 0.5 * sin(time + fragmentPosition.y * 10.0 + 2.0),
+        	0.5 + 0.5 * sin(time + fragmentPosition.x * 10.0 + 4.0)
+    	);
+    	color = tex * vec4(colorShift, 1.0);
 }

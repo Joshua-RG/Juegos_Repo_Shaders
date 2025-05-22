@@ -17,9 +17,9 @@ void MainGame::run()
 	gameState = GameState::PLAY;
 	init();
 	sprites.push_back(new Sprite());
-	sprites.back()->init(-1, -1, 1, 1, "Images/lock.png");
+	sprites.back()->init(-1, 0, 2, 1, "Images/arriba.png"); //arriba
 	sprites.push_back(new Sprite());
-	sprites.back()->init(0, -1, 1, 1, "Images/lock.png");
+	sprites.back()->init(-1, -1, 2, 1, "Images/abajo.png"); //abajo
 	//sprite.init(-1, -1, 1, 1,"Images/lock.png");
 	update();
 }
